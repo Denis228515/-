@@ -1,0 +1,28 @@
+#include<iostream> // Подключаем заголовочный файл
+#include<iomanip> // для std::fixed, std::setprecision
+#include<windows.h> // Используем файл для того, чтобы Кириллица работала корректно при выводе текста
+using namespace std; // Открываем стандартное пространство имен
+int main() { // Объявляем главную функцию
+	SetConsoleCP(65001); // Установка кодировки UTF-8 в консоли на ввод
+	SetConsoleOutputCP(65001); // Установка кодировки UTF-8 в консоли на вывод
+	int number;
+	cout << "Введите число: ";
+	cin >> number;
+	int squareInt = number * number;
+	int cubeInt = number * number * number;
+	cout << "Квадрат (int): " << squareInt << endl;
+	cout << "Куб (int): " << cubeInt << endl;
+	// Неявное приведение 
+	double squareDouble = squareInt;
+	double cubeDouble = cubeInt;
+	cout << "Квадрат (double, неявно): " << fixed << setprecision(2) << squareDouble << endl; // Выводим с точкой и ставим 2 знака после нее
+	cout << "Куб (double, неявно): " << fixed << setprecision(2) << cubeDouble << endl; // Выводим с точкой и ставим 2 знака после нее
+	// Явное приведение
+	double numberDouble = static_cast<double>(number);
+	double squareDoubleyavn = numberDouble * numberDouble;
+	double cubeDoubleyavn = numberDouble * numberDouble * numberDouble;
+	cout << "Квадрат (double, явно): " << squareDoubleyavn << endl;
+	cout << "Куб (double, явно): " << cubeDoubleyavn << endl;
+	// Присваивание int -> double дает тот же результат без потерь
+	return 0; // Сообщаем, что программа завершена успешно
+}
