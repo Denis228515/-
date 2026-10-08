@@ -1,0 +1,18 @@
+#include<iostream> // Подключаем заголовочный файл
+#include<iomanip> // Для std::fixed, std::setprecision
+#include<windows.h> // Используем файл для того, чтобы Кириллица работала корректно при выводе текста
+using namespace std; // Открываем стандартное пространство имен
+int main() { // Объявляем главную функцию
+	SetConsoleCP(65001); // Установка кодировки UTF-8 в консоли на ввод
+	SetConsoleOutputCP(65001); // Установка кодировки UTF-8 в консоли на вывод
+	float x = 10000.0f;
+	double y = 10000.0;
+	float result_float = x * x * x * x + x * x * x + x * x + x + 1.0f; // Вычисляем на float
+	double result_double = y * y * y * y + y * y * y + y * y + y + 1.0; // Вычисляем на double
+	cout << fixed << setprecision(0); // Результат с фиксированной точкой
+	// Выводим результаты
+	cout << "Double: " << result_double << endl;
+	cout << "Float: " << result_float << endl;
+	cout << "Разница: " << result_double - result_float << endl;
+	return 0; // Сообщаем, что программа завершена успешно
+}
